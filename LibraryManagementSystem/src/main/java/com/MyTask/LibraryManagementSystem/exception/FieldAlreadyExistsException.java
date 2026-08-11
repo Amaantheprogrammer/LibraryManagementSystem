@@ -1,7 +1,7 @@
 package com.MyTask.LibraryManagementSystem.exception;
 
-public class FieldAlreadyExists extends RuntimeException {
-    public FieldAlreadyExists(String message) {
+public class FieldAlreadyExistsException extends RuntimeException {
+    public FieldAlreadyExistsException(String message) {
         super(message);
     }
 }

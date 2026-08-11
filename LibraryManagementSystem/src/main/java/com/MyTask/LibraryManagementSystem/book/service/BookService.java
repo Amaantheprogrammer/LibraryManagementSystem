@@ -5,7 +5,7 @@ import com.MyTask.LibraryManagementSystem.book.dto.BookResponse;
 import com.MyTask.LibraryManagementSystem.book.dto.UpdateBookRequest;
 import com.MyTask.LibraryManagementSystem.book.entity.Book;
 import com.MyTask.LibraryManagementSystem.book.repository.BookRepository;
-import com.MyTask.LibraryManagementSystem.exception.FieldAlreadyExists;
+import com.MyTask.LibraryManagementSystem.exception.FieldAlreadyExistsException;
 import com.MyTask.LibraryManagementSystem.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -54,7 +54,7 @@ public class BookService {
     @Transactional
     public BookResponse addBook(AddBookRequest request) {
         if (bookRepository.existsByTitle(request.getTitle())) {
-            throw new FieldAlreadyExists("Book already exists with title: " + request.getTitle());
+            throw new FieldAlreadyExistsException("Book already exists with title: " + request.getTitle());
         }
         Book book = Book.builder()
                 .title(request.getTitle())
@@ -72,8 +72,7 @@ public class BookService {
         if (request.getTitle() != null
                 && !request.getTitle().equals(book.getTitle())
                 && bookRepository.existsByTitle(request.getTitle())) {
-            throw new FieldAlreadyExists(
-                    "Book already exists with title: " + request.getTitle());
+            throw new FieldAlreadyExistsException("Book already exists with title: " + request.getTitle());
         }
         if (request.getTitle() != null) {
             book.setTitle(request.getTitle());

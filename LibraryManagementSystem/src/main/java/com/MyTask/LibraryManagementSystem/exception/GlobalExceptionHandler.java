@@ -20,8 +20,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-    @ExceptionHandler(FieldAlreadyExists.class)
-    public ResponseEntity<ErrorResponse> handleFieldAlreadyExistsException(FieldAlreadyExists ex) {
+    @ExceptionHandler(FieldAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleFieldAlreadyExistsException(FieldAlreadyExistsException ex) {
         ErrorResponse response = ErrorResponse.builder()
                 .message(ex.getMessage())
                 .status(HttpStatus.BAD_REQUEST.value())

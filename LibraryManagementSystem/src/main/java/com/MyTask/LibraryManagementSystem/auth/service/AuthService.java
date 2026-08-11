@@ -5,7 +5,7 @@ import com.MyTask.LibraryManagementSystem.auth.dto.LoginRequest;
 import com.MyTask.LibraryManagementSystem.auth.dto.RegisterRequest;
 import com.MyTask.LibraryManagementSystem.auth.jwt.JwtService;
 import com.MyTask.LibraryManagementSystem.exception.ResourceNotFoundException;
-import com.MyTask.LibraryManagementSystem.exception.FieldAlreadyExists;
+import com.MyTask.LibraryManagementSystem.exception.FieldAlreadyExistsException;
 import com.MyTask.LibraryManagementSystem.user.entity.User;
 import com.MyTask.LibraryManagementSystem.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class AuthService {
 
     public void register(RegisterRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new FieldAlreadyExists("User already exists with username: " + request.getUsername());
+            throw new FieldAlreadyExistsException("User already exists with username: " + request.getUsername());
         }
         User user = User.builder()
                 .fullName(request.getFullName())
