@@ -126,13 +126,13 @@ GET /books
 #### Get Book By ID
 
 ```http
-GET /books/{id}
+GET /books/{bookId}
 ```
 
 #### Update Book
 
 ```http
-PATCH /books/{id}
+PATCH /books/update/{bookId}
 ```
 
 ## Database
