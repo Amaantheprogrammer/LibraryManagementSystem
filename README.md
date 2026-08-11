@@ -132,16 +132,8 @@ GET /books/{id}
 #### Update Book
 
 ```http
-PUT /books/{id}
+PATCH /books/{id}
 ```
-
-#### Search Books
-
-```http
-GET /books/search
-```
-
-> Note: Endpoint paths may vary based on your controller mappings.
 
 ## Database
 
